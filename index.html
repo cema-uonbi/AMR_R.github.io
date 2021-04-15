@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Data Wrangling and Analysis with R</title>
+  <meta name="description" content="Fleming Fund" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Data Wrangling and Analysis with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Fleming Fund" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Wrangling and Analysis with R" />
+  
+  <meta name="twitter:description" content="Fleming Fund" />
+  
+
+<meta name="author" content="Washington State University- Global Health Program Kenya" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="getting-started-with-r.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#what-can-r-do"><i class="fa fa-check"></i><b>1.2</b> What can R do?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#basics-of-r"><i class="fa fa-check"></i><b>1.3</b> Basics of R</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#the-r-console"><i class="fa fa-check"></i><b>1.4</b> The <strong>R</strong> console</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#r-workspaces"><i class="fa fa-check"></i><b>1.5</b> R workspaces</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#useful-tips-for-r"><i class="fa fa-check"></i><b>1.6</b> Useful tips for <strong>R</strong></a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#r-resources-and-finding-help"><i class="fa fa-check"></i><b>1.7</b> <strong>R</strong> resources and finding help</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#r-architecture"><i class="fa fa-check"></i><b>1.8</b> <strong>R</strong> architecture</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html"><i class="fa fa-check"></i><b>2</b> Getting started with R</a><ul>
+<li class="chapter" data-level="2.1" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#installing-and-using-r-packages"><i class="fa fa-check"></i><b>2.1</b> Installing and using <strong>R</strong> packages</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#creating-objects-in-r"><i class="fa fa-check"></i><b>2.2</b> Creating objects in <strong>R</strong></a></li>
+<li class="chapter" data-level="2.3" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#functions-in-r"><i class="fa fa-check"></i><b>2.3</b> Functions in <strong>R</strong></a></li>
+<li class="chapter" data-level="2.4" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#data-types-and-importation"><i class="fa fa-check"></i><b>2.4</b> Data types and importation</a></li>
+<li class="chapter" data-level="2.5" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#importing-and-data-manipulation-in-r"><i class="fa fa-check"></i><b>2.5</b> Importing and Data manipulation in R</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#in-built-datasets"><i class="fa fa-check"></i><b>2.5.1</b> In-built datasets</a></li>
+<li class="chapter" data-level="2.5.2" data-path="getting-started-with-r.html"><a href="getting-started-with-r.html#import-data-from-external-files"><i class="fa fa-check"></i><b>2.5.2</b> Import data from ``external" files</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-manipulation-in-r.html"><a href="data-manipulation-in-r.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-manipulation-in-r.html"><a href="data-manipulation-in-r.html#dereferencing"><i class="fa fa-check"></i><b>3.1</b> Dereferencing</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-manipulation-in-r.html"><a href="data-manipulation-in-r.html#merging-data"><i class="fa fa-check"></i><b>3.1.1</b> Merging data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-manipulation-in-r.html"><a href="data-manipulation-in-r.html#subsetting-data"><i class="fa fa-check"></i><b>3.1.2</b> Subsetting data</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-manipulation-in-r.html"><a href="data-manipulation-in-r.html#substring"><i class="fa fa-check"></i><b>3.1.3</b> Substring</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i><b>4</b> Data wrangling</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-wrangling.html"><a href="data-wrangling.html#tools-for-manipulating-data"><i class="fa fa-check"></i><b>4.1</b> Tools for manipulating data</a></li>
+<li class="chapter" data-level="4.2" data-path="data-wrangling.html"><a href="data-wrangling.html#making-datasets-tidy"><i class="fa fa-check"></i><b>4.2</b> Making datasets tidy</a></li>
+<li class="chapter" data-level="4.3" data-path="data-wrangling.html"><a href="data-wrangling.html#pipes-in-r"><i class="fa fa-check"></i><b>4.3</b> Pipes in R %&gt;%</a></li>
+<li class="chapter" data-level="4.4" data-path="data-wrangling.html"><a href="data-wrangling.html#gather"><i class="fa fa-check"></i><b>4.4</b> gather()</a></li>
+<li class="chapter" data-level="4.5" data-path="data-wrangling.html"><a href="data-wrangling.html#grouping-data"><i class="fa fa-check"></i><b>4.5</b> Grouping data</a></li>
+<li class="chapter" data-level="4.6" data-path="data-wrangling.html"><a href="data-wrangling.html#separate"><i class="fa fa-check"></i><b>4.6</b> separate()</a></li>
+<li class="chapter" data-level="4.7" data-path="data-wrangling.html"><a href="data-wrangling.html#a-sample-data-set"><i class="fa fa-check"></i><b>4.7</b> A sample data set</a></li>
+<li class="chapter" data-level="4.8" data-path="data-wrangling.html"><a href="data-wrangling.html#summarise"><i class="fa fa-check"></i><b>4.8</b> summarise()</a></li>
+<li class="chapter" data-level="4.9" data-path="data-wrangling.html"><a href="data-wrangling.html#filter-rowsobservations-with-matching-conditions"><i class="fa fa-check"></i><b>4.9</b> filter() rows/observations with matching conditions</a></li>
+<li class="chapter" data-level="4.10" data-path="data-wrangling.html"><a href="data-wrangling.html#distinct"><i class="fa fa-check"></i><b>4.10</b> distinct()</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>5</b> Data visualisation</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-visualisation.html"><a href="data-visualisation.html#starting-with-ggplot"><i class="fa fa-check"></i><b>5.1</b> Starting with ggplot</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="data-visualisation.html"><a href="data-visualisation.html#geom_bar"><i class="fa fa-check"></i><b>5.1.1</b> geom_bar</a></li>
+<li class="chapter" data-level="5.1.2" data-path="data-visualisation.html"><a href="data-visualisation.html#geom_histogram"><i class="fa fa-check"></i><b>5.1.2</b> geom_histogram</a></li>
+<li class="chapter" data-level="5.1.3" data-path="data-visualisation.html"><a href="data-visualisation.html#geom_boxplots"><i class="fa fa-check"></i><b>5.1.3</b> geom_boxplots</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-visualisation.html"><a href="data-visualisation.html#facetwrap-using-two-variables"><i class="fa fa-check"></i><b>5.1.4</b> Facetwrap using two variables</a></li>
+<li class="chapter" data-level="5.1.5" data-path="data-visualisation.html"><a href="data-visualisation.html#using-histogram-and-faceting"><i class="fa fa-check"></i><b>5.1.5</b> using histogram and faceting</a></li>
+<li class="chapter" data-level="5.1.6" data-path="data-visualisation.html"><a href="data-visualisation.html#using-density"><i class="fa fa-check"></i><b>5.1.6</b> using density</a></li>
+<li class="chapter" data-level="5.1.7" data-path="data-visualisation.html"><a href="data-visualisation.html#geom_point-using-the-iris-dataset"><i class="fa fa-check"></i><b>5.1.7</b> geom_point using the iris dataset</a></li>
+<li class="chapter" data-level="5.1.8" data-path="data-visualisation.html"><a href="data-visualisation.html#using-more-aesthetics-in-geom_point"><i class="fa fa-check"></i><b>5.1.8</b> Using more aesthetics in geom_point</a></li>
+<li class="chapter" data-level="5.1.9" data-path="data-visualisation.html"><a href="data-visualisation.html#using-statistics-with-ggplot"><i class="fa fa-check"></i><b>5.1.9</b> Using statistics with ggplot</a></li>
+<li class="chapter" data-level="5.1.10" data-path="data-visualisation.html"><a href="data-visualisation.html#working-with-themes"><i class="fa fa-check"></i><b>5.1.10</b> Working with themes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="amr-data-analysis.html"><a href="amr-data-analysis.html"><i class="fa fa-check"></i><b>6</b> AMR data analysis</a><ul>
+<li class="chapter" data-level="6.1" data-path="amr-data-analysis.html"><a href="amr-data-analysis.html#human-health-sector-amr-data"><i class="fa fa-check"></i><b>6.1</b> Human Health Sector AMR data</a></li>
+<li class="chapter" data-level="6.2" data-path="amr-data-analysis.html"><a href="amr-data-analysis.html#human-health-sector-amuc-data"><i class="fa fa-check"></i><b>6.2</b> Human Health Sector AMU/C data</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="amr-data-analysis.html"><a href="amr-data-analysis.html#first-isolates"><i class="fa fa-check"></i><b>6.2.1</b> First isolates</a></li>
+<li class="chapter" data-level="6.2.2" data-path="amr-data-analysis.html"><a href="amr-data-analysis.html#resistance-percentages"><i class="fa fa-check"></i><b>6.2.2</b> Resistance percentages</a></li>
+<li class="chapter" data-level="6.2.3" data-path="amr-data-analysis.html"><a href="amr-data-analysis.html#independence-test"><i class="fa fa-check"></i><b>6.2.3</b> Independence test</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="amr-data-analysis.html"><a href="amr-data-analysis.html#animal-health-sector-amr-data"><i class="fa fa-check"></i><b>6.3</b> Animal Health sector AMR data</a></li>
+<li class="chapter" data-level="6.4" data-path="amr-data-analysis.html"><a href="amr-data-analysis.html#animal-health-sector-amuc-data"><i class="fa fa-check"></i><b>6.4</b> Animal Health Sector AMU/C data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Wrangling and Analysis with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Data Wrangling and Analysis with R</h1>
+<p class="author"><em>Washington State University- Global Health Program Kenya</em></p>
+<p class="date"><em>Last update: March 2021</em></p>
+</div>
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<ul>
+<li><p>R is a system for data manipulation, statistical computation and graphics liked for its flexibility in data manipulation, high-level graphics, and numerous specialized add-on packages that will handle almost all, if not all of your statistical needs.</p></li>
+<li><p>It is based on an earlier public domain language called <strong>S</strong> that was developed in the 1970’s by a group of researchers at the Bell Laboratories, New Jersey, led by <a href="https://statistics.stanford.edu/people/john-chambers">John Chambers</a>. Both <strong>C</strong> programming and <strong>Unix</strong> operating system were developed in these same labs. <a href="http://www-stat.stanford.edu/~jmc4/">Chambers</a> in his book ``Software for Data Analysis" describes two motivating principles for the development of such a statistical system:</p>
+<ul>
+<li>Exploration - a system allowing researchers to ask meaningful questions about their data quickly and flexibly</li>
+<li>Trustworthiness - a system producing trustworthy results, and can be shown to be trustworthy by providing the codes used in the analysis to the scientific community for critique</li>
+</ul></li>
+<li><p><strong>R</strong> was developed as an implementation of the <strong>S</strong> language in the early 1990’s by <a href="http://www.stat.auckland.ac.nz/~ihaka/">Ross Ihaka</a> and <strong>R</strong>obert Gentleman at the University of Auckland, New Zealand. Its name <strong>R</strong> is partly derived from the first developers first names, and also as a play on the name of its predecessor <strong>S</strong>.</p></li>
+<li><p>The commercial implementation of the <strong>S</strong> language is available as <strong>S-PLUS</strong>. Like many other commercial softwares, S-PLUS is a closed system developed by a team of software engineers paid for their efforts. The software is sold to the users, and the underlying source code kept as a company secret. Users only use the features provided in the software and can only suggest new features but may not implement those features themselves. Many commercial softwares including Apple, Adobe, SAS, Stata, Microsoft operate on this principle.</p></li>
+<li><p>Linux operating system, Quantum GIS, Libreoffice/Openoffice and the Firefox web browser are examples of softwares similar to <strong>R</strong> which are built on open-source principles.</p></li>
+</ul>
+<div id="why-r" class="section level2">
+<h2><span class="header-section-number">1.1</span> Why R?</h2>
+<ul>
+<li><p>Besides its excellent graphical and statistical capabilities, R is Open Source (all the ’’fancy" codes are open for study, change and to be freely distributed - Free to download) and has an enthusiastic online community that is likely to answer all your queries during your journey to conquering/mastering the R language. Alternative softwares may cost you hundreds to thousands of dollars for single licenses. R source code, developed by the <a href="http://www.r-project.org/contributors.html">core team</a> can be downloaded and examined by anyone, allowing for accelerated detection of software bugs and development of new features. It comes with built-in powerful analytical functions.</p></li>
+<li><p>In the unlikely event that it does not have the method you are interested in using, chances are that someone else has written a function implementing the method - which may be available somewhere on the web - and can be downloaded, interrogated, used and improved for free. Once fully conversant with the R language, you will be able to write your own functions to meet your needs.</p></li>
+<li><p>The debate on <strong>R</strong> versus <strong>SAS</strong> is huge, and the link <a href="http://www.r-bloggers.com/on-r-versus-sas/">here</a> and <a href="http://stats.stackexchange.com/questions/33780/r-vs-sas-why-is-sas-preferred-by-private-companies">here</a> should form interesting reading.</p></li>
+<li><p>In addition, there is an interesting blog page that examines the subject of <a href="http://r4stats.com/articles/popularity/">The Popularity of Data Science Software</a> - measuring the popularity/market share of several softwares used for advanced statistical analysis over the last few years.</p></li>
+</ul>
+</div>
+<div id="what-can-r-do" class="section level2">
+<h2><span class="header-section-number">1.2</span> What can R do?</h2>
+<ul>
+<li>The <strong>R</strong> language can handle most if not all of your data analysis requirements inclusive of linear, logistic, multilevel/hierarchical regressions, survival analysis, multivariate techniques (principal component analysis, multiple correspondence analysis, clustering techniques), genetic analysis, spatial analysis, among others. Many existing statistical methods are implemented in <strong>R</strong> and chances are that new methods will first /initially be implemented in <strong>R</strong> before in many other softwares.</li>
+</ul>
+</div>
+<div id="basics-of-r" class="section level2">
+<h2><span class="header-section-number">1.3</span> Basics of R</h2>
+<ul>
+<li><strong>R</strong> is freely available for use and distribution under the license terms of GNU General Public License.</li>
+<li><strong>R</strong> runs on <strong>Windows, Mac OS</strong> and <strong>Linux</strong> platforms.</li>
+<li>The latest version of <strong>R</strong> can be downloaded from the <strong>Comprehensive R Archive Network - CRAN</strong> - main website is <a href="http://cran.r-project.org">http://cran.r-project.org</a>.</li>
+<li>CRAN is a network of web servers mirrored all around the world (each contains identical up-to-date versions of code and <strong>R</strong> documentation). The idea is to use the CRAN <a href="http://cran.r-project.org">mirror</a> closest to you to minimize download time - with high-speed internet you may never note any difference in download time.</li>
+<li>Once <strong>R</strong> is downloaded, install it to your computer just as you would any new software.</li>
+<li>The <strong>base R</strong> you have installed contains built-in functions (contained in libraries) that will comfortably handle certain data manipulations, analysis and graphing.</li>
+<li>Specialized groups of functions (packages) can be downloaded, added on to <strong>base R</strong> and used dependent on the needs of the researcher (very much like adding on apps into your smartphone)</li>
+<li><strong>R</strong> is case-sensitive</li>
+<li>The # character at the beginning of a line signifies a comment, and is therefore not executed. This is very helpful in describing codes and their functions</li>
+<li>Help files for <strong>R</strong> functions are obtained by preceding the function name with <strong>?</strong> (e.g.  <strong>?mean</strong>)</li>
+</ul>
+</div>
+<div id="the-r-console" class="section level2">
+<h2><span class="header-section-number">1.4</span> The <strong>R</strong> console</h2>
+<p>Start the R system, a main window - R graphic-user-interface(RGui) and a sub-window (R Console) should appear. The console appears with a command prompt <span class="math inline">\(&gt;\)</span>. Entering a command such as below: the result is printed immediately below your commands</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a>  <span class="dv">2</span><span class="op">+</span><span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p>Notably R is not a menu-driven software with a graphical user interface (there have been attempts to create user interfaces), instead the researcher composes commands.</p>
+<ul>
+<li>R is object-oriented: rather than work with files, we work with objects containing our data.</li>
+</ul>
+<p>Take for example: our first command above (2+5) we can store it as an object assigned the name ``ob1" as below</p>
+<ul>
+<li>Operators <strong><span class="math inline">\(&lt;-\)</span></strong> or <strong><span class="math inline">\(=\)</span></strong> are used to assign things or store objects</li>
+<li>These commands return nothing!</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1"></a> ob1 &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">+</span><span class="dv">5</span></span>
+<span id="cb3-2"><a href="index.html#cb3-2"></a> ob2 &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">6</span><span class="op">/</span><span class="dv">3</span></span></code></pre></div>
+<ul>
+<li>To obtain contents of the two objects - you will need to call each of the objects created into the console as below</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1"></a> ob1</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1"></a> ob2</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+</div>
+<div id="r-workspaces" class="section level2">
+<h2><span class="header-section-number">1.5</span> R workspaces</h2>
+<ul>
+<li>The objects you have created are contained within your current working environment <strong>R workspace</strong>.</li>
+<li>This is internal to <strong>R</strong> and not a file stored on your computer.</li>
+<li>To see a  of the objects within your <strong>R</strong> workspace, use</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1"></a> <span class="kw">ls</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;ob1&quot; &quot;ob2&quot;</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1"></a><span class="co">## or to remove &quot;ob1&quot; from the workspace</span></span>
+<span id="cb10-2"><a href="index.html#cb10-2"></a><span class="kw">rm</span>(ob1)</span>
+<span id="cb10-3"><a href="index.html#cb10-3"></a></span>
+<span id="cb10-4"><a href="index.html#cb10-4"></a><span class="co">## check for object &quot;ob1&quot;&quot;</span></span>
+<span id="cb10-5"><a href="index.html#cb10-5"></a></span>
+<span id="cb10-6"><a href="index.html#cb10-6"></a><span class="co">## to quit R, type q()</span></span></code></pre></div>
+<ul>
+<li><p>You will need to make a decision if you want to save your workspace or not. Clicking yes, your workspace is saved in a file with an extension  in your current working directory.</p></li>
+<li><p>The next time you open <strong>R</strong> from the same working directory, the saved workspace will be restored.</p></li>
+<li><p>It is good practice to always <strong>set your working directory</strong> - follow the path R <span class="math inline">\(&gt;\)</span> Misc <span class="math inline">\(&gt;\)</span> Change working directory <span class="math inline">\(&gt;\)</span> choose the folder you prefer to work from.</p></li>
+</ul>
+</div>
+<div id="useful-tips-for-r" class="section level2">
+<h2><span class="header-section-number">1.6</span> Useful tips for <strong>R</strong></h2>
+<ul>
+<li><p>The <strong>UP</strong> key - accesses the command history within the <strong>R</strong> console. Particularly helpful when you are developing a code in R allowing you to run the line again and modify it if necessary. This saves you the need to re-type the code every time.</p></li>
+<li><p>The <strong>“tab”</strong> key - serves as an autocomplete function. In R, its checks at the command line to determine whether the user is typing a known file name (scanning through to determine if there exists a file matching the file name the user is typing).</p></li>
+<li><p>Use an <strong>R editor:</strong> Having a good <strong>R</strong> editor/IDES (integrated development environment) makes the learning and use of <strong>R</strong> easier, and the storing and retrieving to your <strong>R</strong> codes faster and efficient. There are several good <strong>R</strong> editors out there.</p></li>
+<li><p>My preferred is <strong>RStudio</strong> - available to download from <a href="http://www.rstudio.com">here</a>. It is free, perhaps the easiest of the IDEs to work with for those with little programming experience, is open source and works well on any of the platforms (Windows, Mac, and Linux).
+++ Once it launches it contains the console, a text editor, list of variables and functions loaded in the workspace, and a file browser</p></li>
+<li><p>Other IDEs to consider <a href="http://www.vim.org">Vim</a>, <a href="http://www.gnu.org/software/emacs/">Emacs</a>, or <a href="http://www.eclipse.org/eclipse/">Eclipse</a>.</p></li>
+</ul>
+</div>
+<div id="r-resources-and-finding-help" class="section level2">
+<h2><span class="header-section-number">1.7</span> <strong>R</strong> resources and finding help</h2>
+<p>There are sufficient online resources to help with your <strong>R</strong> learning. Below is a list of some that you might find helpful:</p>
+<ul>
+<li><p><a href="http://www.statmethods.net">Quick-R</a> is an easy to read website containing many short topics and codes to get you started on data import, manipulation and statistics as implemented in . It is written in a simple language and provides appropriate examples in many instances.</p></li>
+<li><p><a href="http://www.ats.ucla.edu/stat/r/">UCLA R resources</a> provides links to various R resources, a particular helpful one is <a href="http://www.ats.ucla.edu/stat/dae/">Data Analysis Examples</a> which has comprehensive codes required to carry out many statistical techniques in  (and other softwares - Stata, SAS, Mplus and SPSS).</p></li>
+<li><p><a href="http://www.stackoverflow.com">Stack Overflow</a>: a beautiful resource with lots of questions and answers by and from professional and enthusiast programmers including the -user community.</p></li>
+<li><p><a href="http://www.r-bloggers.com">R-bloggers</a> amalgamates many blogs on .</p></li>
+<li><p><a href="http://www.rseek.org">Rseek</a>]: an <strong>R</strong> project search engine.</p></li>
+<li><p><a href="http://www.cookbook-r.com">Cookbook for R</a>: an excellent resource for solutions to common tasks and problems in use of  for data manipulation, analysis and graphing.</p></li>
+<li><p><a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Causal Inference Book by Miguel Hernan</a></p></li>
+<li><p><a href="https://stats.stackexchange.com">Cross Validated</a>: question and answer site for people interested in statistics, machine learning, data analysis, data mining, and data visualization</p></li>
+<li><p><strong>R</strong> own resources - these are installed together with <em>base R</em></p></li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1"></a><span class="kw">help.search</span>(<span class="st">&quot;sum&quot;</span>)</span></code></pre></div>
+<ul>
+<li> - Robert I. Kabacoff - creator of the <a href="http://www.statmethods.net">Quick R</a> website.</li>
+</ul>
+</div>
+<div id="r-architecture" class="section level2">
+<h2><span class="header-section-number">1.8</span> <strong>R</strong> architecture</h2>
+<div class="figure">
+<img src="images/Rarchitecture.jpg" style="width:50.0%" alt="" />
+<p class="caption"><a href="http://www.ats.ucla.edu/stat/r/seminars/intro.htm" class="uri">http://www.ats.ucla.edu/stat/r/seminars/intro.htm</a></p>
+</div>
+<ul>
+<li><p>User downloads the <strong>Base R</strong> which comes pre-installed with <em>core packages</em> - providing functions for most basic data manipulations, importation, analysis and graphing.</p></li>
+<li><p>A front-end software for example text editors as <em>RStudio</em> or <em>Tinn-R</em> is used to connect the user to <strong>R</strong>.</p></li>
+<li><p>In-case the user has special requirements for extra functions not found in <strong>Base R</strong> and its <em>core packages</em>, the user may download and install <em>specialised packages</em> that contain the functions/methods required. There are <em>400+</em> packages available for use in CRAN.</p></li>
+<li><p>A comprehensive list of contributed <strong>R</strong> packages, and a short description of each is found <a href="http://cran.r-project.org/web/packages/available_packages_by_name.html">here</a>{.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="getting-started-with-r.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
